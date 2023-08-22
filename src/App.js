@@ -3,13 +3,14 @@ import {useAuth} from "@frontegg/react";
 import React, { useState, useEffect } from 'react';
 
 function App() {
-    const [setCookieValue] = useState(null);
+    const [cookieValue, setCookieValue] = useState(null);
 
     useEffect(() => {
         // On component mount, read the cookie value
         const value = getCookie("loginOrigin");
         setCookieValue(value);
     }, []);
+
     const setCookie = (name, value, days) => {
         let expires = "";
         if (days) {
@@ -39,6 +40,7 @@ function App() {
 
     const redirectToLogin = () => {
         setCookie("loginOrigin", "https://app2.correkt.horse", 7);
+        console.log(cookieValue);
         window.location.href = `https://auth.correkt.horse?redirectUrl=${window.location}`;
     }
 
