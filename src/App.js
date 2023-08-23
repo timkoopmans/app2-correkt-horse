@@ -1,24 +1,15 @@
 import './App.css';
 import {useAuth} from "@frontegg/react";
 import React, { useState, useEffect } from 'react';
-import jwt from 'jsonwebtoken';
 
 function App() {
     const [cookieValue, setCookieValue] = useState(null);
-    const [subdomain, setSubdomain] = useState(null);
 
     useEffect(() => {
         // On component mount, read the cookie value
         const value = getCookie("loginOrigin");
         setCookieValue(value);
-
-        const token = getCookie("jwtToken");
-        if (token) {
-            const decodedToken = jwt.decode(token);
-            const extractedSubdomain = decodedToken?.sub;
-            setSubdomain(extractedSubdomain);
-        }
-    }, [cookieValue]);
+    }, []);
 
     const setCookie = (name, value, days) => {
         let expires = "";
@@ -74,7 +65,6 @@ function App() {
         <div className="debug">
             <p>cookieValue: {cookieValue}</p>
             <p>localStorage: {localStorage.getItem('redirectUrl')}</p>
-            <p>Subdomain: {subdomain}</p>
         </div>
     </div>);
 }
