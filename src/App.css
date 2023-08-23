@@ -84,16 +84,16 @@
 }
 
 .debug {
-  font-family: 'Roboto Mono', Courier, monospace; /* classic monospaced font */
-  background-color: #f9f9f9; /* light gray background for distinction */
+  font-family: 'Roboto Mono', Courier, monospace;
+  background-color: #f9f9f9;
   padding: 10px;
-  border: 1px solid #d4d4d4; /* subtle border */
+  border: 1px solid #d4d4d4;
   border-radius: 4px;
   width: fit-content;
-  margin: 0 auto; /* centering if desired */
+  margin: 10px auto;
 }
 
 .debug p {
-  margin: 5px 0; /* spacing between paragraphs */
-  color: #333; /* dark gray text */
+  margin: 5px 0;
+  color: #333;
 }
