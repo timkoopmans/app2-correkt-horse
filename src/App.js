@@ -15,7 +15,8 @@ function App() {
         const token = getCookie("jwtToken");
         if (token) {
             const decodedToken = jwt.decode(token);
-            setSubdomain(decodedToken?.subdomain);
+            const extractedSubdomain = decodedToken?.sub;
+            setSubdomain(extractedSubdomain);
         }
     }, [cookieValue]);
 
