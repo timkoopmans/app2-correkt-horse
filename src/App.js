@@ -62,6 +62,10 @@ function App() {
                 <h1>app2.correkt.horse</h1>
                 <button className="login-button" onClick={() => redirectToLogin()}>Login</button>
             </div>}
+        <div className="debug">
+            <p>cookieValue: {cookieValue}</p>
+            <p>localStorage: {localStorage.getItem('redirectUrl')}</p>
+        </div>
     </div>);
 }
 
