@@ -3,7 +3,7 @@ import {useAuth} from "@frontegg/react";
 import React, { useState, useEffect } from 'react';
 
 function App() {
-    const [cookieValue, setCookieValue] = useState(null);
+    const [getCookieValue, setCookieValue] = useState(null);
 
     useEffect(() => {
         // On component mount, read the cookie value
@@ -34,14 +34,19 @@ function App() {
 
     const {user, isAuthenticated} = useAuth();
 
+    let loginOrigin = getCookieValue;
+    if (loginOrigin) {
+        console.log('got loginOrigin', loginOrigin);
+    }
+
     const logout = () => {
         window.location.href = `${window.location}account/logout`;
     }
 
     const redirectToLogin = () => {
-        setCookie("loginOrigin", "https://app2.correkt.horse", 7);
-        console.log(cookieValue);
-        window.location.href = `https://auth.correkt.horse?redirectUrl=${window.location}`;
+        setCookie("loginOrigin", "app2.correkt.horse", 7);
+        console.log(getCookieValue);
+        window.location.href = `https://auth.correkt.horse`;
     }
 
     return (<div className='App'>
@@ -63,8 +68,7 @@ function App() {
                 <button className="login-button" onClick={() => redirectToLogin()}>Login</button>
             </div>}
         <div className="debug">
-            <p>cookieValue: {cookieValue}</p>
-            <p>localStorage: {localStorage.getItem('redirectUrl')}</p>
+            <p>loginOrigin: {loginOrigin}</p>
         </div>
     </div>);
 }
